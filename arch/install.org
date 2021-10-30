@@ -33,7 +33,7 @@ This file contains installation instructions for Arch Linux (for my setup). To r
 * Chroot
 ** Install essential packages
 #+begin_src sh
-  pacstrap /mnt base linux linux-firmware networkmanager vim
+  pacstrap /mnt base base-devel linux linux-firmware linux-headers networkmanager vim
 #+end_src
 ** Prepare and chroot to /mnt
 #+begin_src sh
@@ -82,3 +82,20 @@ Install os-prober for multiple Oses
 #+end_src
 
 Uncomment ~%wheel ALL=(ALL) ALL~
+
+* Install sound, desktop environment and other tools
+
+#+begin_src sh
+  pacman -S plasma-desktop sddm konsole dolphin purpose kde-cli-tools kdegraphics-thumbnailers ffmpegthumbs xorg-xrandr pulseaudio kscreen kmix pavucontrol discover packagekit-qt5 flatpak fwupd gufw mpv libdvdcss git ttf-dejavu mlocate
+  systemctl enable sddm
+  updatedb
+#+end_src
+
+- To enable autologin you can add edit ~/usr/lib/sddm/sddm.conf.d/default.conf~ and add current user to ~User=~
+- To set a resolution (if resolution is not set) to 1080p (inside user session)
+#+begin_src sh
+xrandr
+xrandr -s 1920x1080
+#+end_src
+
+
