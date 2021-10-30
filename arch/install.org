@@ -4,12 +4,52 @@ This file contains installation instructions for Arch Linux (for my setup). To r
 * Follow Arch Wiki Installation Guide
   [[https://wiki.archlinux.org/title/installation_guide][https://wiki.archlinux.org/title/installation_guide]]
 * Partition
-** Use ~cfdisk~ command to create partitons. For virtualbox, you may want to create partitions for /boot (500M), swap (1.5G) and root (rest of partition). Use around 15G dynamic drive.
-** To Format the drives use following commands (Assuming /dev/sda1 as /boot, /dev/sda2 as swap and /dev/sda3 as root).
+** Create Partition
+   Use ~cfdisk~ command to create partitons. For virtualbox, you may want to create partitions for /boot (500M), swap (1.5G) and root (rest of partition). Use around 15G dynamic drive.
+** Format
+   To Format the drives use following commands (Assuming /dev/sda1 as /boot, /dev/sda2 as swap and /dev/sda3 as root).
 *** [[https://wiki.archlinux.org/title/Swap#Swap_partition][Swap]]:
 #+begin_src sh
   lsblk
   mkswap /dev/sda2
+#+end_src
+*** Format and mount /mnt/boot and /mnt partitons
+	If you want to use efi format /dev/sda1 to vfat and mount to /mnt/efi
+#+begin_src sh
+  mkfs.ext4 /dev/sda1
+  mkfs.ext4 /dev/sda3
+#+end_src
+
+** Mount partitions
+#+begin_src sh
   swapon /dev/sda2
-  lsblk
+  mkdir /mnt/boot
+  mount /dev/sda1 /mnt/boot
+  mount /dev/sda3 /mnt
+#+end_src
+
+* Chroot
+** Install essential packages
+#+begin_src sh
+  pacstrap /mnt base linux linux-firmware emacs
+#+end_src
+** Prepare and chroot to /mnt
+#+begin_src sh
+  genfstab -U /mnt >> /mnt/etc/fstab
+  arch-chroot /mnt
+#+end_src
+* Install git and get this guide
+#+begin_src sh
+cd /tmp
+pacman -S git
+git clone https://github.com/neppramod/useless-linux.git
+cd useless-linux/arch
+emacs -nw install.org
+#+end_src
+
+* Initialize
+  Set TimeZone (using Denver as example), sync clock, localization, hostname, initcpio
+#+begin_src sh
+ln -sf /usr/share/zoneinfo/America/Denver /etc/localtime
+
 #+end_src
