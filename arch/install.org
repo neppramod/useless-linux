@@ -1,0 +1,15 @@
+#+Install Arch
+This file contains installation instructions for Arch Linux (for my setup). To run a particular section, in emacs go to the end of the src block (end_src) and press Ctrl + x Ctrl + e
+
+* Follow Arch Wiki Installation Guide
+  [[https://wiki.archlinux.org/title/installation_guide][https://wiki.archlinux.org/title/installation_guide]]
+* Partition
+** Use ~cfdisk~ command to create partitons. For virtualbox, you may want to create partitions for /boot (500M), swap (1.5G) and root (rest of partition). Use around 15G dynamic drive.
+** To Format the drives use following commands (Assuming /dev/sda1 as /boot, /dev/sda2 as swap and /dev/sda3 as root).
+*** [[https://wiki.archlinux.org/title/Swap#Swap_partition][Swap]]:
+#+begin_src sh
+  lsblk
+  mkswap /dev/sda2
+  swapon /dev/sda2
+  lsblk
+#+end_src
