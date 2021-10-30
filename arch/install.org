@@ -5,7 +5,7 @@ This file contains installation instructions for Arch Linux (for my setup). To r
   [[https://wiki.archlinux.org/title/installation_guide][https://wiki.archlinux.org/title/installation_guide]]
 * Partition
 ** Create Partition
-   Use ~cfdisk~ command to create partitons. For virtualbox, you may want to create partitions for /boot (500M), swap (1.5G) and root (rest of partition). Use around 15G dynamic drive.
+   Use ~cfdisk~ command to create partitons. For virtualbox, you may want to create partitions for /boot (500M), swap (1.5G) and root (rest of partition). Use around 15G dynamic drive. For virtualbox use ~dos~ for label type in ~cfdisk~.
 ** Format
    To Format the drives use following commands (Assuming /dev/sda1 as /boot, /dev/sda2 as swap and /dev/sda3 as root).
 *** [[https://wiki.archlinux.org/title/Swap#Swap_partition][Swap]]:
@@ -17,39 +17,68 @@ This file contains installation instructions for Arch Linux (for my setup). To r
 	If you want to use efi format /dev/sda1 to vfat and mount to /mnt/efi
 #+begin_src sh
   mkfs.ext4 /dev/sda1
+  # mkfs.vfat /dev/sda1 #for efi
   mkfs.ext4 /dev/sda3
 #+end_src
 
 ** Mount partitions
 #+begin_src sh
   swapon /dev/sda2
-  mkdir /mnt/boot
-  mount /dev/sda1 /mnt/boot
+  # Don't do following for efi
+  #mkdir /mnt/boot
+  #mount /dev/sda1 /mnt/boot
   mount /dev/sda3 /mnt
 #+end_src
 
 * Chroot
 ** Install essential packages
 #+begin_src sh
-  pacstrap /mnt base linux linux-firmware emacs
+  pacstrap /mnt base linux linux-firmware networkmanager vim
 #+end_src
 ** Prepare and chroot to /mnt
 #+begin_src sh
   genfstab -U /mnt >> /mnt/etc/fstab
+  cat /mnt/etc/fstab
   arch-chroot /mnt
-#+end_src
-* Install git and get this guide
-#+begin_src sh
-cd /tmp
-pacman -S git
-git clone https://github.com/neppramod/useless-linux.git
-cd useless-linux/arch
-emacs -nw install.org
+  #mkdir efi
+  #mount /dev/sda1 efi
 #+end_src
 
 * Initialize
   Set TimeZone (using Denver as example), sync clock, localization, hostname, initcpio
+  - First, edit ~/etc/locale.gen~ and uncomment ~en_US.UTF-8 UTF-8~.
+	
 #+begin_src sh
-ln -sf /usr/share/zoneinfo/America/Denver /etc/localtime
+  ln -sf /usr/share/zoneinfo/America/Denver /etc/localtime
+  hwclock --systohc
+  locale-gen
+  echo LANG=en_US.UTF-8 > /etc/locale.conf
+  echo archcomp > /etc/hostname
+  mkinitcpio -P
+  pacman -S grub efibootmgr
 
+  # EFI
+  grub-install --target=x86_64-efi --efi-directory=efi --bootloader-id=GRUB
+
+  # Regular
+   grub-install --target=i386-pc /dev/sda
+
+  grub-mkconfig -o /boot/grub/grub.cfg
+  passwd
 #+end_src
+
+Install os-prober for multiple Oses
+
+* Install packages and create user
+  Uncomment ~multilib~ in ~/etc/pacman.conf~
+#+begin_src sh
+  systemctl enable NetworkManager
+  systemctl start NetworkManager
+  pacman -Sy
+  pacman -S sudo vim bash-completion
+  useradd -m -g users -G wheel,storage,power -s /bin/bash someusername
+  passwd someusername
+  EDITOR=vim visudo
+#+end_src
+
+Uncomment ~%wheel ALL=(ALL) ALL~
