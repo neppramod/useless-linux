@@ -25,3 +25,27 @@ Note: Meta = Super/Win key
   - Zoom In - ~Meta + =~
   - Zoom Out - ~Meta + -~
 * Plasma
+  - Activate Task Manager Entry - ~Meta + 1-9~
+  - Open Klipper at Mouse Position - ~Meta + V~
+* Session Management
+  - Lock Screen - ~Meta + L~ or ~Ctrl + Alt + L~
+  - Logout      - ~Ctrl + Alt + Del~
+* Common Actions
+  - Close - ~Ctrl + Esc~ or ~Ctrl + W~
+  - Create Folder - ~F10~
+  - Delete - ~Shift + Del~
+  - Move to Trash - ~Del~
+  - Paste - ~Ctrl + V~ or ~Shift + Ins~
+  - Paste Selection - ~Ctrl + Shift + Ins~
+  - Activate Next/Prev Tab - ~Ctrl + ]~ and ~Ctrl + [~
+  - Add Bookmark - ~Ctrl + B~
+  - Back - ~Alt + Left~
+  - Document Back - ~Alt + Shift + Left~
+  - Quit - ~Ctrl + Q~
+  - Up - ~Alt + Up~
+  - Actual Size - ~Ctrl + 0~
+  - Full Screen - ~Ctrl + Shift + F~
+  - Show Menu Bar - ~Ctrl + M~
+  - Show Hidden Files - ~Ctrl + H~ or ~Alt + .~
+  - Zoom In - ~Ctrl + =~ or ~Ctrl ++~
+  - Zoom Out - ~Ctrl + -~
