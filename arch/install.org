@@ -86,7 +86,7 @@ Uncomment ~%wheel ALL=(ALL) ALL~
 * Install sound, desktop environment and other tools
 
 #+begin_src sh
-  pacman -S plasma-desktop sddm konsole dolphin purpose kde-cli-tools kdegraphics-thumbnailers ffmpegthumbs xorg-xrandr pulseaudio kscreen kmix pavucontrol discover packagekit-qt5 flatpak fwupd gufw mpv libdvdcss git ttf-dejavu mlocate
+  pacman -S plasma-desktop sddm konsole dolphin purpose kde-cli-tools kdegraphics-thumbnailers ffmpegthumbs xorg-xrandr pulseaudio kscreen kmix pavucontrol discover packagekit-qt5 flatpak fwupd gufw mpv libdvdcss git ttf-dejavu mlocate khotkeys
   systemctl enable sddm
   updatedb
 #+end_src
