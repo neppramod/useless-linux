@@ -1,4 +1,4 @@
-#+ KDE Plasma Useful shortcuts
+#+TITLE: KDE Plasma Useful shortcuts
 Note: Meta = Super/Win key
 * General
   - Dolphin   - ~Meta + E~
