@@ -1,27 +1,27 @@
 #+ KDE Plasma Useful shortcuts
 Note: Meta = Super/Win key
 * General
-  Dolphin   - Meta + E
-  Emoji Selector - Meta + .
-  KRunner - Alt + Space
-  Konsole - Ctrl + Alt + T
-  System Activity - Ctrl + Esc
-  Switch Display - Meta + P
-  Keyboard Layout Switch - Ctrl + Alt + K
+  - Dolphin   - Meta + E
+  - Emoji Selector - Meta + .
+  - KRunner - Alt + Space
+  - Konsole - Ctrl + Alt + T
+  - System Activity - Ctrl + Esc
+  - Switch Display - Meta + P
+  - Keyboard Layout Switch - Ctrl + Alt + K
 * Kwin
-  Close Window - Alt + F4
-  Kill Window - Ctrl + Alt + Esc
-  Tile Window - Meta + Arrow Keys (Left + Up = Top Left)
-  Switch To Window in the background  - Meta + Alt + Arrow Keys
-  Toggle Present Windows (Current Desktop) - Ctrl + F9
-  Toggle Present Windows (All Desktop) - Ctrl + F10
-  Walk Through Windows - Alt + Tab
-  Walk Through Windows backwards - Alt + Shift + Tab
-  Walk Through Windows of current application - Alt + ` or Alt + ~
-  Move window to another desktop - Meta + Ctrl + Shift + Arrow Keys
-  Windows operation Menu - Alt + F3
-  Move to next desktop - Meta + Shift + Right
-  Move to previous desktop - Meta + Shift + Left
-  Zoom In - Meta + =
-  Zoom Out - Meta + -
+  - Close Window - Alt + F4
+  - Kill Window - Ctrl + Alt + Esc
+  - Tile Window - Meta + Arrow Keys (Left + Up = Top Left)
+  - Switch To Window in the background  - Meta + Alt + Arrow Keys
+  - Toggle Present Windows (Current Desktop) - Ctrl + F9
+  - Toggle Present Windows (All Desktop) - Ctrl + F10
+  - Walk Through Windows - Alt + Tab
+  - Walk Through Windows backwards - Alt + Shift + Tab
+  - Walk Through Windows of current application - Alt + ` or Alt + ~
+  - Move window to another desktop - Meta + Ctrl + Shift + Arrow Keys
+  - Windows operation Menu - Alt + F3
+  - Move to next desktop - Meta + Shift + Right
+  - Move to previous desktop - Meta + Shift + Left
+  - Zoom In - Meta + =
+  - Zoom Out - Meta + -
 * Plasma
