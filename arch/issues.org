@@ -1,0 +1,19 @@
+#+TITLE: Arch Issues
+* Ucode problem
+  Looks like amdgpu firmware is provided by two packages ~linux-firmware~ and ~amd-ucode~.
+** Problem
+   My computer did not boot (randomly). It looked like it froze. Since the last message I saw was related to disk mount, my initial impression was it was a mount issue. Initially after 2-3 minutes, it seemed to boot properly. However, after observing it for many reboots, I could confirm it was doing it randomly.
+
+   As initial debug method, I searched ~dmesg~ with ~failed~ string. Nothing came up, as for this particular boot nothing broke. I tried looking through ~journalctl --boot~ message, that also did not reveal any problems.
+
+   After further investigation, I found out I was still able to log to a virtual terminal. So looks like it was booting, but the GUI did not come up. This time, when I checked dmesg for failed string, I found string that looked like this.
+#+begin_src text
+	amdgpu [drm:amdgpu_ib_ring_tests [amdgpu]] *ERROR* IB test failed on gfx.
+#+end_src
+
+Looks like amdgpu failed during boot. After some google search, I found amd-ucode installs a file in /boot that is loaded to grub.cfg.
+** Solution
+   Since ~linux-firmware~ already has file for amdgpu firmware, I really did not need ~amd-ucode~. After uninstalling ~amd-ucode~, updating grub with ~grub-mkconfig~ and making sure ~linux-firmware~ was still installed, everything worked just like it would before the problem started.
+** Lesson
+   Don't install random packages, unless you know what they do.
+
