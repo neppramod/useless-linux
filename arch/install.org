@@ -69,6 +69,8 @@ This file contains installation instructions for Arch Linux (for my setup). To r
 
 Install os-prober for multiple Oses
 
+Also add GRUB_DISABLE_OS_PROBER=false in /etc/default/grub
+
 * Install packages and create user
   Uncomment ~multilib~ in ~/etc/pacman.conf~
 #+begin_src sh
