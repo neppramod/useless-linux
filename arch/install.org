@@ -89,9 +89,7 @@ Uncomment ~%wheel ALL=(ALL) ALL~
 
 #+begin_src sh
   pacman -S plasma-desktop sddm konsole dolphin xorg-xrandr pulseaudio kscreen kmix pavucontrol discover packagekit-qt5 flatpak fwupd gufw mpv libdvdcss git ttf-dejavu mlocate khotkeys mpv ncdu nomacs acpi ark bluedevil emacs gnu-free-fonts firefox gufw gzip hdparam jdk-openjdk kaccounts-providers kdeplasma-addons keepassxc khotkeys kinfocenter kmix lib32-amdvlk lib32-libva lib32-mesa libmad libva-mesa-driver lrzip mesa-vdpau man-pages mlocate noto-fonts-extra noto-fonts-emoji okular p7zip pacman-contrib plasma-nm plasma-pa powerdevil quodlibet samba spectacle steam ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-droid ttf-dejavu ttf-bitstream-vera ttf-ubuntu-font-family unarchiver unrar vkd3d xf86-video-amdgpu libc++
-
   systemctl enable sddm
-
   updatedb
 #+end_src
 
