@@ -80,8 +80,8 @@ int main(int argc, char *argv[])
 {
 
     // Optimize i/o operation in C++
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+  //ios::sync_with_stdio(0);
+  //cin.tie(0);
 
   /*
 	// Input Oputput
@@ -140,12 +140,12 @@ int main(int argc, char *argv[])
   #define MP make_pair
 
   pi pair1({2, 3});
-  cout << "pair1: " << pair1.first << ", " << pair1.S << endl;
+  cout << "pair1: " << pair1.first << ", " << pair1.S << "\n";
 
   #define REP(i, a, b) for (int i = a; i <= b; i++)
 
   REP(i, 1, 5) {
-	cout << "Say hello 5 times" << endl;
+	cout << "Say hello 5 times" << "\n";
   }
 
   // Be careful using macro
@@ -261,7 +261,7 @@ int main(int argc, char *argv[])
 	cout << s1 << " ";
   }
   cout << "\n";
-
+  
   // Binary Search method 1
   int binsarr[] = {2, 3, 4, 5, 6, 7};
   int binsize = 6;
@@ -273,7 +273,7 @@ int main(int argc, char *argv[])
 	int mid = f + (g - f) / 2;
 
 	if (binsarr[mid] == searchterm) {
-	  cout << "Found at index: " << mid << endl;
+	  cout << "Found at index: " << mid << "\n";
 	}
 
 	if (binsarr[mid] < searchterm) {
@@ -292,7 +292,7 @@ int main(int argc, char *argv[])
   }
 
   if (binsarr[f] == searchterm) {
-	cout << "Found at index: " << f << endl;
+	cout << "Found at index: " << f << "\n";
   }
 
   // C++ binary search functions
@@ -300,7 +300,7 @@ int main(int argc, char *argv[])
   // upper_bound pointer to greater
   auto h = lower_bound(binsarr, binsarr + binsize, searchterm) - binsarr;
   if (h < binsize && binsarr[h] == searchterm) {
-	cout << "Found at index: " << h << endl;
+	cout << "Fppound at index: " << h << "\n";
   }
 
   // count number of 2
@@ -331,9 +331,11 @@ int main(int argc, char *argv[])
 
   // we found maximum value where ok(f) is false
   // add 1 to get first true after false
-  cout << "First true is at: " << f + 1 << endl;
+  cout << "First true is at: " << (f + 1) << "\n";
 
   // Find peak of a hill i.e. f(x) < f(x+1), when x < k, f(x) > f(x+1) when x >= k
+
+
   f = -1;
   for (int i = 20; i >= 1; i /= 2) {
 	while (hill(f + i) < hill(f + i + 1)) {
@@ -343,6 +345,8 @@ int main(int argc, char *argv[])
   cout << "Hill is at " << (f + 1) << "\n";
 
 
+
+  
   // C++ specific elements
   int j = 5;
   int* y = new int(j);
@@ -363,12 +367,16 @@ int main(int argc, char *argv[])
   delete person2;
   person2 = nullptr;
 
+
+  
   // Can use unique_ptr(one pointer), shared_ptr(multiple owners using reference count) and
   // weak_ptr (multiple owners but no reference count)
   // If used inside a method, gets deleted when method exits, without needing to use delete 
   unique_ptr<Person> person3(new Person("John", 2.3));
   person3->printInfo();
 
+
+  
   P manyps[2];
   P p1 = {3, 2};
   P p2 = {4}; // only set x
@@ -401,7 +409,7 @@ void swap(T& a, T& b)
 	b = tmp;
 }		
    */
-
+  /*
   // use const so that value cannot be changed
   double* rates = new double[2];
   rates[0] = 2.3;
@@ -438,7 +446,7 @@ void swap(T& a, T& b)
   cout << ptr << "\n";
 
   cout << strcmp("Hi", "Hi") << "\n";
-
+  
   // Numeric conversion
   int intval = atoi("1000");
   long longVal = atoi("100000");
@@ -460,12 +468,122 @@ void swap(T& a, T& b)
   cout << "Str6: " << str6 << "\n";
   string str7('x', 10);   // 10 x chars
   string str8 = str2 + str3;
-  char c = str8[3];
+  char cfromcstr = str8[3];
 
-  // other members: append, assign, at, back, begin, c_str, capacity, clear, compare, copy, empty()? end(), find(), front, insert, length, replace, resize, size, substr, swap
+  // other members: append, assign, at, back, begin, c_str, capacity, clear,
+  // compare, copy, empty()? end(), find(), front, insert, length, replace,
+  // resize, size, substr, swap
 
 
+  // Data Structures
+
+  // A data strcture is a way to store data in the memory of a computer.
+  // It is importanat to choose an appropriate data structure for a problem,
+  // because each data structure has its own advantages and disadvantages. The
+  // crucial question is: which operations are effecient in the chosen data
+  // structure ?
+
+  // Dynamic arrays
+  // Dynamic arraay is an array whose size can be changed during execution of
+  // the program. The most popular dynamic array in C++ is vector
+  vector<int> dv;
+  dv.push_back(3);  // [3]
+  dv.push_back(2);  // [3, 2]
+  dv.push_back(5);  // [3, 2, 5];  // vector<int> dv = {3, 2, 5};
+  cout << dv[0] << "\n";  // 3
+
+  for (int i = 0; i < dv.size(); i++) {
+	cout << dv[i] << "\n";
+  }
+
+  // A shorter way to iterate through a vector is as follows
+  for (auto x : dv) {
+	cout << x << "\n";
+  }
+
+  // The back function returns last element and pop_back removes it
+  cout << dv.back(); // 5
+  dv.pop_back();
+
+  vector<int> dv1(10, 5);
+  // The internal implementation of vector uses an ordinary array. It resizes
+  // when size becomes large or too small, however amortized time is O(1).
+
+  // String also works like dynamic array. In addition it supports + symbol,
+  // substr(k, x) // returns the substring that begins at k and has legnth x
+  // find(t) finds the positon of the first occurrence of a string t
+  string s331 = "hatti";
+  string s332 = s331 + s331;
+  cout << s332 << "\n";
+  s332[2] = 'v';
+  cout << s332 << "\n";
+  string c331 = s332.substr(3, 4); // start from 3, 4 chars
+  cout << c331 << "\n";
+
+
+
+  // Set structures
+  // A set is a data structure that mains a collections of elements. The
+  // type set is based on balanced binary tree and has O(logn) operations.
+  // The structure unordered_set uses hasing thus has O(1) runtime on average.
+  // Function insert adds and element to set,
+  // Function count returns the number of occurences of an element
+  // Function erase removes an element from the set
+  // Set has distinct elements
+  set<int> sset;
+  sset.insert(3);
+  sset.insert(5);
+  sset.insert(5);
+
+  cout << sset.count(5) << "\n"; // 1, as set does not have duplicate
+  sset.erase(5);  // removes the only occurence of 5
+  cout << sset.count(5) << "\n";  // there is no more occurence of 5
+  cout << sset.size() << "\n";  // size is 1
   
+  for (auto x : sset) {
+	cout << x << " ";
+  }
+  cout << "\n";
+
+  // C++ also has multiset and unordered_multiset to work with duplicate elements
+  multiset<int> mset;
+  mset.insert(5);
+  mset.insert(5);
+  cout << mset.count(5) << "\n"; // 2
+
+  // Function erase erases all instances
+  // mset.erase(5);
+  // cout << mset.count(5); // 0
+  // If you want to remvoe first instance use find
+  mset.erase(mset.find(5));
+
+
+  cout << mset.count(5) << "\n";  // 1
+  
+  */
+  
+  // Map Structure
+  // A map is generalized array consisting of key-value pair
+  // Map uses balanced binary tree, has O(logn) time
+  // There is also unordered_map that operates in O(1)
+  // If a value does not exist, a default values is added while accessing the map
+  // The count funciton cna be used to check if a key is in map
+
+  map<string,int> mmap;
+  mmap["monkey"] = 4;
+  mmap["banana"] = 3;
+  cout << mmap["banana"] << "\n";
+  cout << mmap["cat"] << "\n";  // 0, adds key
+
+  if (mmap.count("cat")) {
+	cout << "key cat exists" << "\n";
+  } else {
+	cout << "key does not exist" << "\n";
+  }
+
+
+  // Iterators and ranges
+
   
   return 0;
 }
