@@ -105,6 +105,27 @@ int main(int argc, char *argv[])
   // Open file and change stdio
   freopen("input_file.txt", "r", stdin);
   freopen("output_file.txt", "w", stdout);
+
+  // C++ open file
+  #include <iostream>
+  #include <fstream>
+  
+  using namespace std;
+
+  // Inside function
+
+  // Write to a file
+  ofstream myoutputFile("output.txt");
+  myoutputFile << "Some text" << endl;
+  myoutputFile.close();
+
+  // Read from file
+  string myText;
+  ifstream myinputFile("input.txt");
+
+  while (getline(myinputFile, myText)) {
+      cout << myText;
+  }
   */
 
 
