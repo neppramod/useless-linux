@@ -25,15 +25,15 @@
 #include <bits/stdc++.h>
 
 
-  using namespace std;
+using namespace std;
 /*
   int main()
   {
   
   }
 */
-  // Compile
-  // g++ -std=c++11 -O2 -Wall test.cpp -o test
+// Compile
+// g++ -std=c++11 -O2 -Wall test.cpp -o test
 
 struct P {
   int x, y;
@@ -79,12 +79,12 @@ void displayPayRates(const double* rates, int size);
 int main(int argc, char *argv[])
 {
 
-    // Optimize i/o operation in C++
+  // Optimize i/o operation in C++
   //ios::sync_with_stdio(0);
   //cin.tie(0);
 
   /*
-	// Input Oputput
+  // Input Oputput
   
   int a, b;
   string x;
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 
   
   while (cin >> x) {
-	// keep on reading x until there is input
+  // keep on reading x until there is input
   }
   
 
@@ -134,22 +134,22 @@ int main(int argc, char *argv[])
   typedef vector<int> vi;
   typedef pair<int,int> pi;
 
-  #define F first
-  #define S second
-  #define PB push_back
-  #define MP make_pair
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
 
   pi pair1({2, 3});
   cout << "pair1: " << pair1.first << ", " << pair1.S << "\n";
 
-  #define REP(i, a, b) for (int i = a; i <= b; i++)
+#define REP(i, a, b) for (int i = a; i <= b; i++)
 
   REP(i, 1, 5) {
 	cout << "Say hello 5 times" << "\n";
   }
 
   // Be careful using macro
-  #define SQ(a) (a) * (a)
+#define SQ(a) (a) * (a)
   // a * a would result in wrong answer
   cout << "Square (3 + 3) " << SQ(3 + 3) << "\n";
 
@@ -176,10 +176,10 @@ int main(int argc, char *argv[])
 	Recursion
     void f(int n)
     {
-       if (n == 1) return;
-       f(n-1);
+	if (n == 1) return;
+	f(n-1);
     }
-   */
+  */
 
 
   // Sorting Algorithms
@@ -400,16 +400,16 @@ int main(int argc, char *argv[])
   // to use strongly typed enum
 
   /*
-// Template
-template <class T>
-void swap(T& a, T& b)
-{
-    T tmp = a;
-    a = b;
-	b = tmp;
-}		
-   */
-  /*
+  // Template
+  template <class T>
+  void swap(T& a, T& b)
+  {
+  T tmp = a;
+  a = b;
+  b = tmp;
+  }		
+  */
+  
   // use const so that value cannot be changed
   double* rates = new double[2];
   rates[0] = 2.3;
@@ -560,7 +560,6 @@ void swap(T& a, T& b)
 
   cout << mset.count(5) << "\n";  // 1
   
-  */
   
   // Map Structure
   // A map is generalized array consisting of key-value pair
@@ -583,6 +582,167 @@ void swap(T& a, T& b)
 
 
   // Iterators and ranges
+  // Many functions in C++ standard library operate with iterators. An iterator
+  // is a variable that points to an element in a data structure. The iterator
+  // begin points to the first element and end points to the position after the
+  // last element. Thus the range is half-open
+
+  // Working with ranges
+  vector<int> v44 = {4,2,4};
+  sort(v44.begin(), v44.end());
+  reverse(v44.begin(), v44.end());
+  random_shuffle(v44.begin(), v44.end());
+
+  // Array uses pointers instead of begin and end
+  int v44arr[] = {4, 2, 4};
+  reverse(v44arr, v44arr + 3);
+  random_shuffle(v44arr, v44arr + 3);
+
+  // Set Iterators
+
+  // Iterators are often used to access elements of a set. Following code
+  // points and accesses the first element
+
+  set<int> v44set = {2, 3};
+  set<int>::iterator itset = v44set.begin();
+  cout << *itset << "\n";
+
+  // Iterators are moved forward with ++ operator and backward with -- operator
+  for (auto it = v44set.begin(); it != v44set.end(); it++) {
+	cout << *it << "\n";
+  }
+
+  itset = v44set.end();
+  itset--;
+  cout << *itset << "\n";
+
+  // The find(x) returns an iterator that points to an element whose value is x.
+  // However, if the set does not contain x, the iterator will be end
+  itset = v44set.find(5);
+  if (itset == v44set.end()) {
+	cout << "5 is not found in the set" << "\n";
+  }
+
+  // The function lower_bound(x) returns the smallest element in the set whose
+  // value is at least x, and the function upper_bound(x) returns an iterator
+  // to the smallest element in the set whose value is larger than x.
+  // If the element does not exist, it returns end. These functions are not
+  // supported by the unordered_set structure whoch does not maintain the order
+  // of the elements
+
+  // Following code finds the element nearest to x
+  // If the first or last element is found print that, otherwise find the difference of x with previous and current element and pick smaller of two
+
+  itset = v44set.lower_bound(4);
+  if (itset == v44set.begin()) {
+	cout << *itset << "\n";
+  } else if (itset == v44set.end()) {
+	itset--;
+	cout << *itset << "\n";
+  } else {
+	int a = *itset; itset--;
+	int b = *itset;
+
+	if (4 - b < a - 4) cout << b << "\n";
+	else cout << a << "\n";
+  }
+
+  // Other structures
+
+  // Bitset
+  // A bitset is an array, whose each value is either 0 or 1. It requires less
+  // memory as only 1 bit is used to store single value.
+  bitset<10> bits;
+  bits[1] = 1;
+  bits[3] = 1;
+  cout << bits[3] << "\n"; // 1
+  cout << bits[5] << "\n"; // 0
+
+  // We can also initialize using string
+  bitset<10> bits2(string("0010011110"));   // count from right to left
+  cout << bits2.count() << "\n"; //5
+
+  // Supports various operations
+  bitset<10> bits3(string("1001110001"));
+  cout << (bits2 & bits3) << "\n";  // 0000010000
+  cout << (bits2 | bits3) << "\n";  // 101111111
+  cout << (bits2 ^ bits3) << "\n";  // 1011101111
+
+  // Deque
+
+  // A deque is a dynamic array whose size can be changed at both ends. Like a
+  // vector, a deque provides function push_back and pop_back. It also supports
+  // push_front and pop_front.
+  // Adding and removing elements takes O(1), but is more complex and slower
+  // than vector
+
+  deque<int> dqq;
+  dqq.push_back(5);    // [5]
+  dqq.push_back(2);    // [5,2]
+  dqq.push_front(3);   // [3,5,2]
+  dqq.pop_back();      // [3,5]
+  dqq.pop_front();     // [5]
+
+
+  // Stack
+
+  // A stack is a data structure that provides two O(1) time operations.
+  // Adding an element to the top and removing an element from the top
+
+  stack<int> stk;
+  stk.push(3);
+  stk.push(2);
+  stk.push(5);
+  cout << stk.top() << "\n";  // 5;
+  stk.pop();
+  cout << stk.top() << "\n";  // 2
+
+  // Queue
+
+  // A queue also provides two O(1) operations. Adding an element at the end
+  // of the queue and removing the first element.
+
+  queue<int> quq;
+  quq.push(3);
+  quq.push(2);
+  quq.push(5);
+  cout << quq.front() << "\n";  // 3
+  quq.pop();
+  cout << quq.front() << "\n";  // 2
+
+  // Priority Queue
+
+  // A priority queue maintains a set of elements depending on the type of the
+  // queue
+  // Retrieval and removal of either minimum or maximum element
+  // Insertion and removal takes O(logn) time, and retrieval takes O(1) time
+
+  // While ordered set efficiently supports all the operations of a priority queue
+  // A priority queue has smaller constant factors.
+  // It is usually implemented using a heap structure (logn) that is much
+  // simpler than a balanced binary tree used in ordered set
+
+  // By default C++ priority queue are sorted in decreasing order, and it is
+  // possible to find and remove the largest element in queue.
+
+  priority_queue<int> pqq;
+  pqq.push(3);
+  pqq.push(5);
+  pqq.push(7);
+  pqq.push(2);
+  cout << pqq.top() << "\n"; // 7
+  pqq.pop();
+  cout << pqq.top() << "\n";  // 5
+  pqq.pop();
+  pqq.push(6);
+  cout << pqq.top() << "\n";  // 6
+  pqq.pop();
+
+  // If we want to create a priority queue that supports finding and removing
+  // smallest element we can use following format
+  priority_queue<int,vector<int>,greater<int>> pqq1;
+
+  // In lots of cases sorting can be faster than using some data structures, as sorting is single operation.
 
   
   return 0;
@@ -612,7 +772,7 @@ namespace Q
 	cout << "I am f" << "\n";
   }
 
-  } // namespace Q
+} // namespace Q
   
 
 void Q::V::C::m()
