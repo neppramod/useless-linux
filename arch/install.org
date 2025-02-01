@@ -39,8 +39,6 @@ If you want to use efi format /dev/sda1 to vfat and mount to /mnt/boot/efi
   genfstab -U /mnt >> /mnt/etc/fstab
   cat /mnt/etc/fstab
   arch-chroot /mnt
-  #mkdir efi
-  #mount /dev/sda1 efi
 #+end_src
 
 * Initialize
