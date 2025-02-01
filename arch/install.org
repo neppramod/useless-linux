@@ -13,8 +13,8 @@ This file contains installation instructions for Arch Linux (for my setup). To r
   lsblk
   mkswap /dev/sda2
 #+end_src
-*** Format and mount /mnt/boot and /mnt partitons
-	If you want to use efi format /dev/sda1 to vfat and mount to /mnt/efi
+*** Format and mount /mnt/boot/efi and /mnt partitons
+If you want to use efi format /dev/sda1 to vfat and mount to /mnt/boot/efi
 #+begin_src sh
   mkfs.ext4 /dev/sda1
   # mkfs.vfat /dev/sda1 #for efi
@@ -24,10 +24,9 @@ This file contains installation instructions for Arch Linux (for my setup). To r
 ** Mount partitions
 #+begin_src sh
   swapon /dev/sda2
-  # Don't do following for efi
-  #mkdir /mnt/boot
-  #mount /dev/sda1 /mnt/boot
   mount /dev/sda3 /mnt
+  #mkdir -P /mnt/boot/efi
+  #mount /dev/sda1 /mnt/boot/efi
 #+end_src
 
 * Chroot
