@@ -58,10 +58,9 @@ This file contains installation instructions for Arch Linux (for my setup). To r
   pacman -S grub efibootmgr
 
   # EFI
-  grub-install --target=x86_64-efi --efi-directory=efi --bootloader-id=GRUB
+  # Execute the following command to install the GRUB EFI application grubx64.efi to /boot/efi/EFI/GRUB and install its modules to /boot/grub/x86_64-efi/
 
-  # Regular
-   grub-install --target=i386-pc /dev/sda
+  grub-install --target=x86_64-efi --efi-directory=efi --bootloader-id=GRUB
 
   grub-mkconfig -o /boot/grub/grub.cfg
   passwd
